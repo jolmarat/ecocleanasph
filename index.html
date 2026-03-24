@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoClean Asphalt - Стартап</title>
+    <!-- Подключение Tailwind CSS для стилизации -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Анимации для симуляции */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(5px); }
+        }
+        @keyframes drive {
+            0% { left: -10%; }
+            100% { left: 110%; }
+        }
+        @keyframes drive-reverse {
+            0% { right: -10%; }
+            100% { right: 110%; }
+        }
+        .animate-float { animation: float 3s infinite ease-in-out; }
+        .animate-drive { animation: drive 10s linear infinite; }
+        .animate-drive-reverse { animation: drive-reverse 12s linear infinite; }
+        .animate-spin-slow { animation: spin 20s linear infinite; }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* Стили для переключателей (Toggle) */
+        .toggle-checkbox:checked {
+            background-color: #10b981;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <!-- Хедер -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="bg-green-600 p-2 rounded-lg text-white">
+                    <i data-lucide="wind"></i>
+                </div>
+                <h1 class="text-xl font-bold text-green-800">EcoClean Asphalt</h1>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm font-medium">
+                <button onclick="showTab('overview')" id="nav-overview" class="nav-btn text-green-600 border-b-2 border-green-600 pb-1">Шолу</button>
+                <button onclick="showTab('science')" id="nav-science" class="nav-btn text-gray-500 hover:text-green-600">Технология</button>
+                <button onclick="showTab('economics')" id="nav-economics" class="nav-btn text-gray-500 hover:text-green-600">Экономика</button>
+                <button onclick="showTab('simulation')" id="nav-simulation" class="nav-btn text-gray-500 hover:text-green-600">Симуляция</button>
+            </nav>
+            <button class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition shadow-sm">
+                Жобаны қолдау
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        
+        <!-- ВКЛАДКА: ОБЗОР -->
+        <div id="overview" class="tab-content active animate-in fade-in duration-500">
+            <section class="mb-12 text-center md:text-left md:flex items-center gap-12">
+                <div class="md:w-1/2">
+                    <span class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-4">ЭКОЛОГИЯ ЖӘНЕ ДЕНСАУЛЫҚ</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-800 mb-6 leading-tight">
+                        Ауаны тазартатын <br>
+                        <span class="text-green-600">болашақтың асфальты</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Қалалардағы автокөлік түтінімен күресудің инновациялық жолы. Титан диоксиді (TiO₂) арқылы зиянды газдарды бейтараптандыру.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                            <i data-lucide="check-circle" class="text-green-500 w-5 h-5"></i> TiO₂ қауіпсіз
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                            <i data-lucide="check-circle" class="text-green-500 w-5 h-5"></i> Пассивті технология
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-green-900 aspect-video flex items-center justify-center p-8">
+                        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/asphalt-dark.png')]"></div>
+                        <div class="relative text-center">
+                            <div class="flex justify-center mb-4 text-yellow-400">
+                                <i data-lucide="sun" class="w-16 h-16 animate-pulse"></i>
+                            </div>
+                            <div class="text-white font-bold text-2xl mb-2">Photocatalytic Reaction</div>
+                            <div class="flex gap-4 justify-center">
+                                <div class="bg-red-400/20 border border-red-400 text-red-100 px-3 py-1 rounded text-xs">NOₓ (Газ)</div>
+                                <div class="bg-blue-400/20 border border-blue-400 text-blue-100 px-3 py-1 rounded text-xs">Нитраттар (Қауіпсіз)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
+                    <div class="bg-green-50 p-3 rounded-xl text-green-600"><i data-lucide="activity"></i></div>
+                    <div><p class="text-sm text-gray-500">Қызмет ету мерзімі</p><p class="text-xl font-bold">15-20 жыл</p></div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
+                    <div class="bg-green-50 p-3 rounded-xl text-green-600"><i data-lucide="leaf"></i></div>
+                    <div><p class="text-sm text-gray-500">Тазарту тиімділігі</p><p class="text-xl font-bold">10 жыл+</p></div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
+                    <div class="bg-green-50 p-3 rounded-xl text-green-600"><i data-lucide="trending-up"></i></div>
+                    <div><p class="text-sm text-gray-500">Баға айырмашылығы</p><p class="text-xl font-bold">6-15%</p></div>
+                </div>
+            </section>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-2"><i data-lucide="alert-triangle" class="text-amber-500"></i> Мәселенің өзектілігі</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <p class="text-gray-600 leading-relaxed">
+                        Қазіргі таңда қалаларда ауа ластануы өзекті мәселеге айналды. Негізгі себеп — автокөлік түтіні. Жол маңындағы ауа ең лас болып келеді, бұл тыныс алу аурулары мен жүрек патологияларының өсуіне әкеледі.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-gray-700 mb-4 text-sm">Инвестициялық ахуал (ҚР):</h4>
+                        <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden mb-2">
+                            <div class="bg-red-500 h-full w-[15%]"></div>
+                        </div>
+                        <p class="text-xs text-red-500 font-bold italic">Экологиялық инвестициялар 85% төмендеген</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА: ТЕХНОЛОГИЯ -->
+        <div id="science" class="tab-content">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-2 justify-center text-blue-600">
+                    <i data-lucide="flask-conical"></i> Ғылыми инновация
+                </h3>
+                <div class="space-y-6 text-gray-600 leading-relaxed">
+                    <p>Жоба фотокатализ ғылымына негізделген. Асфальт құрамына титан диоксиді (TiO₂) қосылады. Бұл зат күн сәулесі түскенде катализатор ретінде әрекет етеді.</p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                        <h4 class="font-bold text-blue-800 mb-2 font-mono">NOₓ + TiO₂ + UV → NO₃⁻ + H₂O</h4>
+                        <p class="text-xs text-blue-600 italic">Зиянды газдар қауіпсіз тұздарға айналып, жаңбыр суымен шайылып кетеді.</p>
+                    </div>
+                    <p>Бұл технология тек қана жол емес, ауаны белсенді тазартатын активті бет болып табылады.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА: ЭКОНОМИКА -->
+        <div id="economics" class="tab-content">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-2 text-green-700"><i data-lucide="trending-up"></i> Экономикалық салыстыру</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b text-xs uppercase text-gray-500">
+                                <th class="pb-4">Көрсеткіш</th>
+                                <th class="pb-4">Қарапайым Асфальт</th>
+                                <th class="pb-4 text-green-700">EcoClean Asphalt</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y text-sm">
+                            <tr><td class="py-4">1 тонна бағасы</td><td class="py-4">300 000 тг</td><td class="py-4 font-bold text-green-600">318 000 - 345 000 тг</td></tr>
+                            <tr><td class="py-4">TiO₂ қоспасы</td><td class="py-4">0%</td><td class="py-4 font-bold text-green-600">2-5% (20-50 кг)</td></tr>
+                            <tr><td class="py-4">Экологиялық әсер</td><td class="py-4 text-red-400">Ластаушы</td><td class="py-4 font-bold text-green-600">Тазартушы</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА: СИМУЛЯЦИЯ -->
+        <div id="simulation" class="tab-content">
+            <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">Интерактивті симуляция</h3>
+                        <p class="text-gray-500 text-sm">Фотокатализ процесін бақылаңыз</p>
+                    </div>
+                    <div id="aqi-badge" class="px-4 py-2 rounded-2xl font-bold flex items-center gap-2">
+                        <i data-lucide="activity" class="w-5 h-5"></i> Ауа сапасы: <span id="aqi-label">Жүктелуде...</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Панель управления -->
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-2xl space-y-4">
+                            <h4 class="font-bold text-gray-700 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4"></i> Басқару</h4>
+                            
+                            <label class="flex items-center justify-between p-3 bg-white rounded-xl border cursor-pointer">
+                                <span class="text-sm font-medium flex items-center gap-2"><i data-lucide="sun" id="sun-icon"></i> Күн (UV)</span>
+                                <input type="checkbox" id="sun-toggle" checked class="w-5 h-5 accent-green-600">
+                            </label>
+
+                            <label class="flex items-center justify-between p-3 bg-white rounded-xl border cursor-pointer">
+                                <span class="text-sm font-medium flex items-center gap-2"><i data-lucide="leaf" id="eco-icon"></i> EcoClean</span>
+                                <input type="checkbox" id="eco-toggle" class="w-5 h-5 accent-green-600">
+                            </label>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl text-xs text-blue-700 leading-relaxed" id="sim-info">
+                            Инструкция: Күн сәулесі мен EcoClean режимін қосып, нәтижені көріңіз.
+                        </div>
+                    </div>
+
+                    <!-- Визуализация -->
+                    <div class="md:col-span-2">
+                        <div id="sim-viewport" class="relative h-80 rounded-3xl overflow-hidden transition-colors duration-1000 bg-sky-100">
+                            <!-- Солнце/Луна -->
+                            <div class="absolute top-8 left-12" id="celestial-body">
+                                <i data-lucide="sun" class="text-yellow-400 w-12 h-12 animate-spin-slow"></i>
+                            </div>
+
+                            <!-- Силуэт города -->
+                            <div class="absolute bottom-24 w-full h-16 flex items-end justify-around px-8 opacity-20 text-sky-900">
+                                <div class="w-8 h-12 bg-current rounded-t"></div>
+                                <div class="w-10 h-20 bg-current rounded-t"></div>
+                                <div class="w-6 h-8 bg-current rounded-t"></div>
+                            </div>
+
+                            <!-- Дорога -->
+                            <div id="road" class="absolute bottom-0 w-full h-24 bg-slate-800 border-t-4 border-slate-600 flex flex-col justify-center">
+                                <div class="w-full border-t border-dashed border-white/30 h-0"></div>
+                                
+                                <!-- Частицы газа -->
+                                <div id="particles-container"></div>
+
+                                <!-- Машины -->
+                                <div class="absolute top-4 left-0 animate-drive text-red-300"><i data-lucide="car"></i></div>
+                                <div class="absolute bottom-4 right-0 animate-drive-reverse text-blue-300"><i data-lucide="car" class="rotate-180"></i></div>
+                            </div>
+
+                            <div id="layer-label" class="hidden absolute bottom-20 left-1/2 -translate-x-1/2 px-4 py-1 bg-green-500/80 text-white text-[10px] font-bold rounded-full uppercase">TiO2 Активті қабат</div>
+                        </div>
+                        <div class="flex justify-center gap-6 mt-4 text-[10px] text-gray-500 uppercase font-bold">
+                            <div class="flex items-center gap-1"><span class="w-2 h-2 bg-red-400 rounded-full"></span> NOₓ Газдары</div>
+                            <div class="flex items-center gap-1"><span class="w-2 h-2 bg-green-400 rounded-full"></span> Тазарту</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 mt-12">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <div class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="wind" class="text-green-500"></i> EcoClean Asphalt</div>
+                <p>«EcoClean Asphalt – бұл тек жол емес, болашақтың таза ауаға апаратын нақты қадамы.»</p>
+            </div>
+            <div>
+                <h5 class="text-white font-bold mb-4">Автор</h5>
+                <p>Алтай Айзада, 10-сынып оқушысы</p>
+                <p class="text-xs mt-1">Жетекші: Енбаева Элмира Ерболсынқызы</p>
+            </div>
+            <div class="text-xs">
+                <p>© 2024 EcoClean Asphalt. Атырау облысы.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Инициализация иконок
+        lucide.createIcons();
+
+        // Логика вкладок
+        function showTab(tabId) {
+            // Скрываем все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('text-green-600', 'border-b-2', 'border-green-600'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.add('text-gray-500'));
+
+            // Показываем нужную
+            document.getElementById(tabId).classList.add('active');
+            const activeNav = document.getElementById('nav-' + tabId);
+            activeNav.classList.add('text-green-600', 'border-b-2', 'border-green-600');
+            activeNav.classList.remove('text-gray-500');
+        }
+
+        // Логика симуляции
+        let pollutionLevel = 75;
+        const sunToggle = document.getElementById('sun-toggle');
+        const ecoToggle = document.getElementById('eco-toggle');
+        const particlesContainer = document.getElementById('particles-container');
+
+        // Создание частиц газа
+        function createParticles() {
+            particlesContainer.innerHTML = '';
+            for(let i=0; i<15; i++) {
+                const p = document.createElement('div');
+                p.className = 'gas-particle absolute w-2 h-2 rounded-full blur-sm bg-red-400 opacity-60';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.bottom = (Math.random() * 60 + 10) + 'px';
+                p.style.animation = `float ${2 + Math.random()*2}s infinite ease-in-out`;
+                particlesContainer.appendChild(p);
+            }
+        }
+        createParticles();
+
+        function updateSimulation() {
+            const isSun = sunToggle.checked;
+            const isEco = ecoToggle.checked;
+            const viewport = document.getElementById('sim-viewport');
+            const road = document.getElementById('road');
+            const layerLabel = document.getElementById('layer-label');
+            const sunIcon = document.getElementById('sun-icon');
+            const ecoIcon = document.getElementById('eco-icon');
+            const simInfo = document.getElementById('sim-info');
+            const celestial = document.getElementById('celestial-body');
+
+            // Расчет целевого уровня загрязнения
+            let target = 90;
+            if (isEco && isSun) target = 15;
+            else if (isEco && !isSun) target = 60;
+            else if (!isEco) target = 90;
+
+            // Плавное изменение уровня
+            if (pollutionLevel < target) pollutionLevel++;
+            if (pollutionLevel > target) pollutionLevel--;
+
+            // Обновление UI
+            const aqiBadge = document.getElementById('aqi-badge');
+            const aqiLabel = document.getElementById('aqi-label');
+            
+            if (pollutionLevel < 30) {
+                aqiLabel.innerText = `Өте жақсы (${pollutionLevel}%)`;
+                aqiBadge.className = 'px-4 py-2 rounded-2xl font-bold flex items-center gap-2 bg-green-100 text-green-600';
+            } else if (pollutionLevel < 60) {
+                aqiLabel.innerText = `Орташа (${pollutionLevel}%)`;
+                aqiBadge.className = 'px-4 py-2 rounded-2xl font-bold flex items-center gap-2 bg-yellow-100 text-yellow-600';
+            } else {
+                aqiLabel.innerText = `Қауіпті (${pollutionLevel}%)`;
+                aqiBadge.className = 'px-4 py-2 rounded-2xl font-bold flex items-center gap-2 bg-red-100 text-red-600';
+            }
+
+            // Визуальные эффекты окружения
+            viewport.className = `relative h-80 rounded-3xl overflow-hidden transition-colors duration-1000 ${isSun ? 'bg-sky-100' : 'bg-slate-900'}`;
+            road.className = `absolute bottom-0 w-full h-24 flex flex-col justify-center border-t-4 ${isEco ? 'bg-gray-700 border-green-500' : 'bg-slate-800 border-slate-600'}`;
+            layerLabel.className = isEco ? 'absolute bottom-20 left-1/2 -translate-x-1/2 px-4 py-1 bg-green-500/80 text-white text-[10px] font-bold rounded-full uppercase' : 'hidden';
+            
+            celestial.innerHTML = isSun ? '<i data-lucide="sun" class="text-yellow-400 w-12 h-12 animate-spin-slow"></i>' : '<div class="w-10 h-10 rounded-full bg-slate-300 shadow-inner"></div>';
+            
+            // Информация о процессе
+            if(isEco && isSun) simInfo.innerText = "Фотокаталитикалық реакция белсенді. TiO₂ газдарды бейтараптандыруда.";
+            else if(isEco && !isSun) simInfo.innerText = "Реакция тоқтады (UV жетіспейді). Асфальт қарапайым режимде.";
+            else simInfo.innerText = "Қарапайым жол жабындысы. Ауа тазартылмайды.";
+
+            // Частицы
+            document.querySelectorAll('.gas-particle').forEach(p => {
+                p.className = (isEco && isSun) ? 'gas-particle absolute w-2 h-2 rounded-full blur-sm bg-green-300 opacity-0 transition-all duration-1000' : 'gas-particle absolute w-2 h-2 rounded-full blur-sm bg-red-400 opacity-60';
+            });
+
+            lucide.createIcons();
+        }
+
+        setInterval(updateSimulation, 100);
+    </script>
+</body>
+</html>
